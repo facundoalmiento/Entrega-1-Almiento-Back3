@@ -4,10 +4,9 @@ import { UserModel } from '../models/user.model.js';
 import { PetModel } from '../models/pet.model.js'; 
 
 const router = Router();
-// 5.3) POST "/generateData" → genera e INSERTA en la BD users y pets
-// Body JSON: { "users": number, "pets": number }
+
 router.get('/mockingpets', (req, res) => {
-const { n } = req.query; // opcional: permitir ?n=20 para testear
+const { n } = req.query; 
 const quantity = Number(n) > 0 ? Number(n) : 10;
 const pets = generateMockPets(quantity);
 return res.json({ status: 'success', payload: pets });
@@ -22,8 +21,7 @@ next(err);
 }
 });
 
-// 5.3) POST "/generateData" → genera e INSERTA en la BD users y pets
-// Body JSON: { "users": number, "pets": number }
+
 router.post('/generateData', async (req, res, next) => {
 try {
 const usersCount = Number(req.body?.users) || 0;
